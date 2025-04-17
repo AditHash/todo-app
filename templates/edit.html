@@ -17,6 +17,19 @@
                     <div class="col-md-6">
                         <input type="text" name="description" value="{{ todo.description }}" class="form-control" required>
                     </div>
+                    <div class="col-md-4">
+                        <input type="date" name="due_date" value="{{ todo.due_date }}" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="priority" class="form-control" required>
+                            <option value="Low" {% if todo.priority == "Low" %}selected{% endif %}>Low</option>
+                            <option value="Medium" {% if todo.priority == "Medium" %}selected{% endif %}>Medium</option>
+                            <option value="High" {% if todo.priority == "High" %}selected{% endif %}>High</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="checkbox" name="completed" {% if todo.completed %}checked{% endif %}> Completed
+                    </div>
                     <div class="col-12">
                         <button class="btn btn-primary">Update</button>
                         <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>

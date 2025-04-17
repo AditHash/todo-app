@@ -6,17 +6,36 @@ This project includes a working implementation of Docker Compose using Python an
 
 ## Features
 
-- View a list of tasks.
-- Add new tasks with a topic and description.
-- Edit existing tasks.
-- Delete tasks.
+1. **Authentication**:
+   - Users can register, log in, and log out.
+   - Each user's ToDo items are private and tied to their account.
 
-## Installation Instructions
+2. **ToDo Management**:
+   - Add, edit, delete, and mark tasks as completed.
+   - Tasks include the following fields:
+     - `Topic`: A short title for the task.
+     - `Description`: A detailed description of the task.
+     - `Due Date`: A deadline for the task.
+     - `Priority`: Priority levels (`Low`, `Medium`, `High`).
+     - `Status`: Mark tasks as `Completed` or `Pending`.
 
-Follow these steps to set up and run the project using Docker Compose:
+3. **REST API**:
+   - Exposes a `/api/todos` endpoint for managing ToDo items programmatically.
+   - Supports `GET` and `POST` methods.
 
-1. **Clone the Repository**  
-   Clone this repository to your local machine:
+4. **Health Check**:
+   - A `/health` endpoint to verify the application's status.
+
+## Environment Variables
+
+The application uses a `.env` file to store sensitive information. Below are the required variables:
+
+- `MONGO_URI`: MongoDB connection string (default: `mongodb://localhost:27017/`).
+- `SECRET_KEY`: A secret key for Flask session management.
+
+## Installation
+
+1. Clone the repository:
    ```bash
    git clone https://github.com/AditHash/todo-app.git
    cd todo-app
@@ -34,8 +53,7 @@ Follow these steps to set up and run the project using Docker Compose:
    http://127.0.0.1:5000
    ```
 
-4. **Stop the Application**  
-   To stop the application, press `Ctrl+C` in the terminal and run:
+4. Run the application:
    ```bash
    docker-compose down
    ```

@@ -15,6 +15,9 @@
                         <tr>
                             <th>Topic</th>
                             <th>Description</th>
+                            <th>Due Date</th>
+                            <th>Priority</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -23,9 +26,13 @@
                         <tr>
                             <td>{{ todo.topic }}</td>
                             <td>{{ todo.description }}</td>
+                            <td>{{ todo.due_date }}</td>
+                            <td>{{ todo.priority }}</td>
+                            <td>{{ "Completed" if todo.completed else "Pending" }}</td>
                             <td>
                                 <a href="{{ url_for('edit_todo', id=todo.id) }}" class="btn btn-sm btn-warning">Edit</a>
                                 <a href="{{ url_for('delete_todo', id=todo.id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="{{ url_for('toggle_complete', id=todo.id) }}" class="btn btn-sm btn-info">Toggle</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -38,13 +45,23 @@
             <div class="card-body">
                 <h2 class="card-title">Add New Task</h2>
                 <form action="{{ url_for('add_todo') }}" method="POST" class="row g-3">
-                    <div class="col-md-5">
+                    <div class="col-md-3">
                         <input type="text" name="topic" class="form-control" placeholder="Topic" required>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-3">
                         <input type="text" name="description" class="form-control" placeholder="Description" required>
                     </div>
+                    <div class="col-md-3">
+                        <input type="date" name="due_date" class="form-control" required>
+                    </div>
                     <div class="col-md-2">
+                        <select name="priority" class="form-control" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
                         <button class="btn btn-success w-100">Add</button>
                     </div>
                 </form>
