@@ -2,6 +2,8 @@
 
 This is a simple ToDo application built using Flask and Bootstrap. It allows users to manage their tasks by adding, editing, and deleting them. The frontend is styled using Bootstrap for a clean and responsive design.
 
+This project includes a working implementation of Docker Compose using Python and MongoDB.
+
 ## Features
 
 - View a list of tasks.
@@ -11,38 +13,31 @@ This is a simple ToDo application built using Flask and Bootstrap. It allows use
 
 ## Installation Instructions
 
-Follow these steps to set up and run the project locally:
+Follow these steps to set up and run the project using Docker Compose:
 
 1. **Clone the Repository**  
    Clone this repository to your local machine:
    ```bash
-   git clone <repository-url>
-   cd uv-test
+   git clone https://github.com/AditHash/todo-app.git
+   cd todo-app
    ```
 
-2. **Set Up a Virtual Environment**  
-   Create and activate a virtual environment:
+2. **Run the Application with Docker Compose**  
+   Build and start the application using Docker Compose:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   docker-compose up --build
    ```
 
-3. **Install Dependencies**  
-   Install the required Python packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the Application**  
-   Start the Flask development server:
-   ```bash
-   flask run
-   ```
-
-5. **Access the Application**  
+3. **Access the Application**  
    Open your browser and navigate to:
    ```
    http://127.0.0.1:5000
+   ```
+
+4. **Stop the Application**  
+   To stop the application, press `Ctrl+C` in the terminal and run:
+   ```bash
+   docker-compose down
    ```
 
 ## Project Structure
@@ -50,11 +45,13 @@ Follow these steps to set up and run the project locally:
 - `templates/`: Contains the HTML templates for the application.
 - `app.py`: The main Flask application file.
 - `static/`: Contains static files like CSS and JavaScript (if any).
+- `docker-compose.yml`: Configuration file for Docker Compose.
+- `Dockerfile`: Dockerfile for building the Flask application container.
 
 ## Requirements
 
-- Python 3.7 or higher
-- Flask
+- Docker
+- Docker Compose
 
 ## License
 
